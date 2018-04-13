@@ -15,12 +15,12 @@ export default new Router({
     },
     {
       path: '/ladder',
-      name: 'Ladder',
+      name: 'ladder',
       component: Ladder
     },
     {
       path: '/teams/:id',
-      name: 'Teams',
+      name: 'team',
       component: Team
     }
   ]

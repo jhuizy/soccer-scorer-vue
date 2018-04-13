@@ -60,11 +60,6 @@ export default {
           icon: 'list',
           title: 'Ladder',
           route: '/ladder'
-        },
-        {
-          icon: 'people',
-          title: 'Teams',
-          route: '/teams'
         }
       ],
       miniVariant: false,

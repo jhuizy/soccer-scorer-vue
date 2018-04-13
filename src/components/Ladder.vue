@@ -6,28 +6,36 @@
       hide-actions
       class="elevation-1"
     >
-      
-        <template slot="items" slot-scope="props">
-        <tr @click="goToTeam(props.item.name)">
-        <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.position }}</td>
-        <td class="text-xs-right">{{ props.item.played }}</td>
-        <td class="text-xs-right">{{ props.item.wins }}</td>
-        <td class="text-xs-right">{{ props.item.draws }}</td>
-        <td class="text-xs-right">{{ props.item.losses }}</td>
+      <template slot="items" slot-scope="props">
+        <tr @click="goToTeam(props.item.id)">
+          <td>{{ props.item.name }}</td>
+          <td>{{ props.item.position }}</td>
+          <td>{{ props.item.played }}</td>
+          <td>{{ props.item.wins }}</td>
+          <td>{{ props.item.draws }}</td>
+          <td>{{ props.item.losses }}</td>
         </tr>
-
       </template>
     </v-data-table>
   </v-container>
 </template>
 
 <script>
+import api from '../service/api'
+
 export default {
   methods: {
-    goToTeam (name) {
-      this.$router.push({path: '/teams'})
+    goToTeam (id) {
+      this.$router.push({name: 'team', params: { id: id }})
+    },
+    fetch () {
+      api.getLadder().then(res => {
+        this.items = res
+      })
     }
+  },
+  created () {
+    this.fetch()
   },
   data () {
     return {
@@ -58,16 +66,7 @@ export default {
           value: 'losses'
         }
       ],
-      items: [
-        {
-          name: 'Moose FC',
-          position: 1,
-          played: 2,
-          wins: 1,
-          losses: 1,
-          draws: 0
-        }
-      ]
+      items: []
     }
   }
 }

@@ -6,8 +6,8 @@
       hide-actions
       class="elevation-1"
     >
-        <template slot="items" slot-scope="props">
-          <tr @click="goToTeam(props.item.name)">
+      <template slot="items" slot-scope="props">
+        <tr>
           <td>{{ props.item.name }}</td>
           <td class="text-xs-right">{{ props.item.position }}</td>
           <td class="text-xs-right">{{ props.item.played }}</td>
@@ -37,8 +37,7 @@ export default {
         {
           text: 'Played',
           value: 'played'
-        },
-        
+        }
       ],
       items: [
         {
