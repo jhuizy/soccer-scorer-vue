@@ -57,6 +57,11 @@ export default {
       drawer: true,
       items: [
         {
+          icon: 'today',
+          title: 'Fixtures',
+          route: '/fixtures'
+        },
+        {
           icon: 'list',
           title: 'Ladder',
           route: '/ladder'

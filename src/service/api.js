@@ -1,12 +1,35 @@
-
 export default {
 
-  getFixtures () {
-    return Promise.resolve([
-      {
-
-      }
-    ])
+  getFixtures (date) {
+    return Promise.resolve({
+      round: 4,
+      totalRounds: 10,
+      date: 'Thursday 27th of February',
+      games: [
+        {
+          time: '6:30',
+          home: {
+            id: 1,
+            name: 'Moose FC'
+          },
+          away: {
+            id: 2,
+            name: 'Moose #2'
+          }
+        },
+        {
+          time: '7:15',
+          home: {
+            id: 1,
+            name: 'Moose FC'
+          },
+          away: {
+            id: 2,
+            name: 'Moose #2'
+          }
+        }
+      ]
+    })
   },
 
   getLadder () {
