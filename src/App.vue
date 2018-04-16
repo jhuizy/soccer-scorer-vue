@@ -1,18 +1,16 @@
 <template>
   <v-app>
     <v-navigation-drawer
+      v-if="$vuetify.breakpoint.xsOnly"
       persistent
-      :mini-variant="miniVariant"
       v-model="drawer"
-      clipped
       fixed
       app
     >
       <v-list>
         <v-list-tile>
-          <v-spacer></v-spacer>
-          <v-btn icon @click.stop="miniVariant = !miniVariant">
-            <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
+          <v-btn icon @click.stop="drawer = !drawer">
+            <v-icon v-html="menu"></v-icon>
           </v-btn>
         </v-list-tile>
         <v-list-tile
@@ -33,12 +31,28 @@
     <v-toolbar
       app
       :clipped-left="true"
+      :extended="!$vuetify.breakpoint.xsOnly"
     >
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon
+        v-if="$vuetify.breakpoint.xsOnly"
+        @click.stop="drawer = !drawer">
+      </v-toolbar-side-icon>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon>
         <v-icon>more_vert</v-icon>
+      </v-btn>
+      <v-btn
+        v-if="!$vuetify.breakpoint.xsOnly"
+        slot="extension"
+        v-for="(item, i) in items"
+        :key="i"
+        @click="$router.push(item.route)"
+        flat
+        class="ma-0 pa-0 center"
+      >
+        {{ item.title }}
+        <v-icon v-html="item.icon" right></v-icon>
       </v-btn>
     </v-toolbar>
     <v-content>

@@ -7,7 +7,7 @@
       class="elevation-1"
     >
       <template slot="items" slot-scope="props">
-        <tr @click="goToTeam(props.item.id)">
+        <tr @click="goToTeam(props.item.id)" :style="{cursor: 'pointer'}">
           <td>{{ props.item.name }}</td>
           <td>{{ props.item.position }}</td>
           <td>{{ props.item.played }}</td>
